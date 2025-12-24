@@ -51,7 +51,7 @@ class Solution(object):
         candidate = None
         count = 0
         for n in nums:
-            if count == 0:#为0就重新评选候选人
+            if count == 0:  #为0就重新评选候选人
                 candidate = n
             count += (1 if n == candidate else -1)
         return candidate
