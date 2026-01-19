@@ -9,18 +9,20 @@ class Solution:
     def findPoisonedDuration(self, timeSeries: List[int], duration: int) -> int:
         timeSeries.sort()
         for i in range(len(timeSeries)):
-            timeSeries[i] = [timeSeries[i], timeSeries[i] + duration]
+            timeSeries[i] = [timeSeries[i], timeSeries[i] + duration-1]
         total = 0
         out = []
-        cur_l = cur_r = 0
+        cur_l = cur_r = timeSeries[0][0]
         for l,r in timeSeries:
             if l <= cur_r:
                 cur_r =max(cur_r,r)
             else:
-                total += cur_r - cur_l
+                total += cur_r - cur_l + 1
                 out.append([cur_l,cur_r])
                 cur_l, cur_r = l, r
-        return total+ cur_r - cur_l
+        if duration > 0:
+            return total+ cur_r - cur_l + 1
+        return 0
 def main():
     sol=Solution()
     timeSeries = [1,4]
