@@ -26,6 +26,7 @@ class Solution:
         for i in range(n-2, -1, -1):
             right_max[i] = max(right_max[i+1], height[i])
         water = 0
+        
         for i in range(1,n-1):
             h = min(left_max[i], right_max[i])
             if h > height[i]:

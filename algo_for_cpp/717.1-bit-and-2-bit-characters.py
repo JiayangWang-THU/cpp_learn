@@ -7,6 +7,7 @@
 # @lc code=start
 class Solution:
     def isOneBitCharacter(self, bits: List[int]) -> bool:
+        bits.sort(reverse=True)
         
 # @lc code=end
 
