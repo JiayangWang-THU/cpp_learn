@@ -16,20 +16,15 @@ class Solution:
         #left->root->right
         res = []
         stack = []
-        #root为0代表见底了，stack为空代表存起来的路径也用完了
-        while root or stack:
-                # push入栈模拟递，pop出栈模拟归
-                # 一直往左走，直到无路可走，把所有的left都压入栈
-                while root:
-                    stack.append(root)
-                    root = root.left
-                #root 为空了，left全走完了，现在往回弹出最后一个left，存进去
-                #回退，访问节点
-                root = stack.pop()
-                res.append(root.val)
-                # 走右边
-                # 转向右子树
-                root = root.right
+        def in_order(root: TreeNode | None):
+            """中序遍历"""
+            if root is None:
+                return
+            # 访问优先级：左子树 -> 根节点 -> 右子树
+            in_order(root=root.left)
+            res.append(root.val)
+            in_order(root=root.right)
+        in_order(root)
         return res
 set = Solution()
 print(set.inorderTraversal(TreeNode(1,None,TreeNode(2,TreeNode(3),None))))
