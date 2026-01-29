@@ -13,6 +13,17 @@
 #         self.right = right
 class Solution:
     def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        
-# @lc code=end
+        # left -> right -> root 
+        res=[]
+        def dfs_postorder(root:TreeNode|None):
+            """后序遍历"""
+            if root is None:
+                return
+            # 访问优先级：左子树 -> 右子树 -> 根节点
+            dfs_postorder(root=root.left)
+            dfs_postorder(root=root.right)
+            res.append(root.val)
+        dfs_postorder(root)
+        return res
+        # @lc code=end
 
