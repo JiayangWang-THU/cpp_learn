@@ -18,6 +18,8 @@ class Solution:
         ge = ge_dummy
 
         cur = head
+        # nxt表示按照原始的链条往下走，因为会涉及到断链
+        # 所以需要每轮循环就要把正常的路径取保存下来
         while cur:
             nxt = cur.next
             cur.next = None  # 断开，避免形成环

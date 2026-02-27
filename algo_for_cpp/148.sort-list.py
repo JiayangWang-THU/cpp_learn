@@ -34,7 +34,7 @@ class Solution:
 
         # 3) 合并两个有序链表
         return self._merge(left, right)
-
+        # 这里就是明显的递归方法了，没写完的时候就能使用这一块
     def _merge(self, a: Optional[ListNode], b: Optional[ListNode]) -> Optional[ListNode]:
         dummy = ListNode(0)
         tail = dummy
