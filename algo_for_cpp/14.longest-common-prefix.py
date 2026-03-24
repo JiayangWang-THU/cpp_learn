@@ -15,7 +15,6 @@ class Solution:
                 # 越界 或 不匹配
                 if i >= len(s) or s[i] != first[i]:
                     return first[:i]
-
         return first
         
             

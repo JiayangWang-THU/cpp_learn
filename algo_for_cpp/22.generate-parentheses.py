@@ -17,13 +17,19 @@ class Solution:
         # 所以这有点类似于一个二叉树了，每次在这个分支上会多两种可能
         if n == 0:
             return []
-
+        # 经典面向问题的dp
+        # 我们定义dp[n]就是在要构造的数量为n的所有括号的可能性
         dp = [set() for _ in range(n + 1)]
         dp[1].add("()")
 
         for i in range(2, n + 1):
+            # 这里有整体法的思路
+            # 每一次把前一个里面的可能性都当作一个整体
             for s in dp[i - 1]:
+                # 每个位置可以形成并列
                 for pos in range(len(s) + 1):
+                    # 对每个位置都进行插入遍历
+                    # 就能形成要么并列要么嵌套的结构了
                     new_s = s[:pos] + "()" + s[pos:]
                     dp[i].add(new_s)
 
